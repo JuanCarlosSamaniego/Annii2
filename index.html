@@ -3,114 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Anii ❤️</title>
+    <title>Nuestro Primer Mes ❤️</title>
     <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            /* Degradado en tonos Rosa Palo / Dusty Rose */
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebcdcd 100%);
-            font-family: 'Georgia', serif;
-            color: #4a4a4a;
-            overflow: hidden;
-        }
-        #overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            transition: opacity 1.5s ease;
-        }
-        .start-btn {
-            padding: 15px 40px;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            background: white;
-            border: 1px solid #ebcdcd; /* Borde rosa suave */
-            color: #a3a3a3;
-            cursor: pointer;
-            border-radius: 50px;
-            letter-spacing: 2px;
-            transition: all 0.5s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-        .start-btn:hover {
-            letter-spacing: 3px;
-            color: #4a4a4a;
-            background: #fffcfc;
-        }
-        .container {
-            text-align: center;
-            padding: 25px;
-            width: 90%;
-            max-width: 450px;
-            opacity: 0;
-            transition: opacity 2.5s ease;
-            background: rgba(255, 255, 255, 0.3); /* Fondo sutil para el texto */
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-        }
-        h1 { font-weight: normal; font-size: 1.8rem; margin-bottom: 20px; color: #333; }
-        
-        .mensaje-completo { 
-            font-size: 1.3rem; 
-            line-height: 1.6; 
-            margin: 25px 0; 
-            color: #333;
-            font-style: italic;
-        }
-        
-        #musicPlayer {
-            margin-top: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 12px;
-            overflow: hidden;
+        :root {
+            --rosa-palo: #ebcdcd;
+            --texto: #4a4a4a;
+            --fondo: #fdfcfb;
         }
 
-        .footer { margin-top: 40px; font-size: 0.75rem; font-style: italic; opacity: 0.5; letter-spacing: 1px; }
+        body {
+            margin: 0;
+            background-color: var(--fondo);
+            font-family: 'Georgia', serif;
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, #fff 0%, var(--rosa-palo) 100%);
+        }
+
+        h1 { font-size: 2rem; font-weight: normal; margin-bottom: 10px; }
+        .subtitle { font-style: italic; opacity: 0.7; }
+
+        .timeline {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .moment {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .moment.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .moment img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+        }
+
+        .moment .date {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rosa-palo);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .moment h2 {
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            font-weight: normal;
+        }
+
+        .moment p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--rosa-palo);
+            color: white;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
     </style>
 </head>
 <body>
 
-    <div id="overlay">
-        <button class="start-btn" onclick="reveal()">ABRIR CON AMOR ✨</button>
-    </div>
+    <header>
+        <h1>Museo de un Primer Mes</h1>
+        <p class="subtitle">Para Anii, con todo mi amor.</p>
+        <div class="scroll-down">Desliza para recorrerlo ↓</div>
+    </header>
 
-    <div class="container" id="mainContent">
-        <h1>Hola Anii ❤️</h1>
+    <div class="timeline">
         
-        <div class="mensaje-completo">
-            Gracias por ser parte de mi historia.
-            <br><br>
-            ¿Me dejas ser el protagonista de la tuya como tu novio?
-        </div>
-        
-        <div id="musicPlayer">
-            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                frameborder="0" height="175" 
-                style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
-                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-                src="https://embed.music.apple.com/mx/song/opalite/1838810953?l=en-GB&autoplay=1">
-            </iframe>
+        <div class="moment">
+            <span class="date">Día 1</span>
+            <h2>El inicio oficial</h2>
+            <img src="foto1.jpg" alt="Momento 1"> <p>Todavía puedo sentir los nervios de ese día. Fue el comienzo de la mejor decisión que he tomado.</p>
         </div>
 
-        <div class="footer">"You make everything look like opalite..."</div>
+        <div class="moment">
+            <span class="date">Día 12</span>
+            <h2>Nuestra primera cena</h2>
+            <img src="foto2.jpg" alt="Momento 2">
+            <p>Ese restaurante, la plática y cómo nos reímos. Ahí supe que cada día contigo sería especial.</p>
+        </div>
+
+        <div class="moment">
+            <span class="date">Día 25</span>
+            <h2>Detalles que cuentan</h2>
+            <img src="foto3.jpg" alt="Momento 3">
+            <p>No necesitamos grandes eventos, solo estar juntos. Gracias por ser mi lugar favorito.</p>
+        </div>
+
     </div>
+
+    <footer>
+        <p>Por muchos meses más escribiendo esta historia.</p>
+        <p style="font-size: 1.5rem;">❤️</p>
+    </footer>
 
     <script>
-        function reveal() {
-            document.getElementById('overlay').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('overlay').style.display = 'none';
-                document.getElementById('mainContent').style.opacity = '1';
-            }, 1500);
-        }
+        // Efecto de aparición al hacer scroll
+        const observerOptions = { threshold: 0.3 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.moment').forEach(moment => {
+            observer.observe(moment);
+        });
     </script>
 </body>
 </html>
