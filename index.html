@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Pantalla de inicio para activar música */
+        /* Pantalla de inicio */
         #intro {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -59,67 +59,82 @@
         .subtitle { font-style: italic; opacity: 0.7; }
 
         .timeline {
-            padding: 60px 20px;
-            max-width: 500px;
+            padding: 60px 10px;
+            max-width: 600px;
             margin: auto;
         }
 
-        .moment {
-            margin-bottom: 100px;
+        .month-section {
+            margin-bottom: 120px;
+            text-align: center;
             opacity: 0;
             transform: translateY(40px);
             transition: all 1.2s ease-out;
         }
 
-        .moment.visible {
+        .month-section.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .moment img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-        }
-
-        .moment .date {
+        .date-label {
             font-size: 0.8rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: #b58d8d;
             font-weight: bold;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .moment h2 { font-size: 1.4rem; margin-bottom: 15px; font-weight: normal; color: #333; }
-        .moment p { font-size: 1rem; color: #666; font-style: italic; }
+        /* Galería de 3 fotos */
+        .photo-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .photo-grid img {
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.5s;
+        }
+
+        /* Tamaños específicos */
+        .img-small {
+            width: 25%;
+            height: 120px;
+            opacity: 0.8;
+        }
+
+        .img-main {
+            width: 45%;
+            height: 250px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+            border: 3px solid white;
+        }
+
+        .month-info h2 { font-size: 1.4rem; margin-bottom: 10px; font-weight: normal; color: #333; }
+        .month-info p { font-size: 0.95rem; color: #666; font-style: italic; padding: 0 20px; }
 
         #music-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
             z-index: 50;
-            opacity: 0.8;
-            transition: opacity 0.3s;
         }
-        #music-container:hover { opacity: 1; }
 
         footer {
             padding: 80px 20px;
             text-align: center;
             background: var(--rosa-palo);
             color: white;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 30px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-            animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
@@ -130,82 +145,80 @@
 </head>
 <body>
 
-    <!-- Pantalla para habilitar audio -->
     <div id="intro">
         <button class="entrar-btn" onclick="iniciarMuseo()">ENTRAR AL MUSEO ✨</button>
     </div>
 
     <header>
         <h1>Gracias por estos 2 meses</h1>
-        <p class="subtitle">Para Anii, la mejor parte de mi historia.</p>
-        <div class="scroll-hint">Desliza para ver nuestros recuerdos ↓</div>
+        <p class="subtitle">Para Anii, cada foto es un pedacito de nosotros.</p>
+        <div style="margin-top:20px; animation: bounce 2s infinite; font-size: 0.8rem; opacity: 0.5;">Desliza ↓</div>
     </header>
 
     <div class="timeline">
         
-        <!-- Recuerdo 1 -->
-        <div class="moment">
-            <span class="date">Mes 1</span>
-            <h2>Donde todo comenzó</h2>
-            <img src="foto1.jpeg" alt="Recuerdo 1">
-            <p>"You make everything look like opalite..." Gracias por ese primer mes lleno de magia.</p>
+        <!-- MES 1 -->
+        <div class="month-section">
+            <span class="date-label">Mes 1: El Comienzo</span>
+            <div class="photo-grid">
+                <img src="mes1_foto1.jpg" class="img-small" alt="Mini 1">
+                <img src="mes1_foto2.jpg" class="img-main" alt="Principal 1">
+                <img src="mes1_foto3.jpg" class="img-small" alt="Mini 2">
+            </div>
+            <div class="month-info">
+                <h2>Donde todo brilló</h2>
+                <p>"You make everything look like opalite..." Los primeros 30 días fueron mágicos.</p>
+            </div>
         </div>
 
-        <!-- Recuerdo 2 -->
-        <div class="moment">
-            <span class="date">Mes 2</span>
-            <h2>Creciendo juntos</h2>
-            <img src="foto2.jpg" alt="Recuerdo 2">
-            <p>Cada día que pasa me doy cuenta de que este es solo el inicio de algo increíble.</p>
-        </div>
-
-        <!-- Recuerdo 3 (Puedes añadir más) -->
-        <div class="moment">
-            <span class="date">Hoy</span>
-            <h2>60 días de pura felicidad</h2>
-            <img src="foto3.jpg" alt="Recuerdo 3">
-            <p>Gracias por dejarme ser el protagonista de tu historia. Te quiero, Anii.</p>
+        <!-- MES 2 -->
+        <div class="month-section">
+            <span class="date-label">Mes 2: Nuestra Historia</span>
+            <div class="photo-grid">
+                <img src="mes2_foto1.jpeg" class="img-small" alt="Mini 3">
+                <img src="mes2_foto2.jpg" class="img-main" alt="Principal 2">
+                <img src="mes2_foto3.jpg" class="img-small" alt="Mini 4">
+            </div>
+            <div class="month-info">
+                <h2>60 días a tu lado</h2>
+                <p>Gracias por dejarme ser el protagonista de tu vida. Te quiero cada día más, Anii.</p>
+            </div>
         </div>
 
     </div>
 
-    <!-- Reproductor de música (Opalite) -->
     <div id="music-container">
         <div id="player"></div>
     </div>
 
     <footer>
-        <p>Felices 2 meses, amor.</p>
-        <p style="font-size: 1.5rem;">❤️</p>
+        <p>Felices 2 meses, Anii ❤️</p>
     </footer>
 
     <script>
         function iniciarMuseo() {
-            // Desvanecer intro
             const intro = document.getElementById('intro');
             intro.style.opacity = '0';
             setTimeout(() => intro.style.display = 'none', 1500);
 
-            // Cargar música
             const playerDiv = document.getElementById('player');
             playerDiv.innerHTML = `
                 <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
-                frameborder="0" height="175" 
-                style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" 
+                frameborder="0" height="80" 
+                style="width:100%;overflow:hidden;border-radius:10px;" 
                 src="https://embed.music.apple.com/mx/song/opalite/1838810953?l=en-GB&autoplay=1">
                 </iframe>`;
         }
 
-        // Animación de aparición
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.moment').forEach(m => observer.observe(m));
+        document.querySelectorAll('.month-section').forEach(m => observer.observe(m));
     </script>
 </body>
 </html>
