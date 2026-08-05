@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 5 Months Exhibition — Para Anii ❤️</title>
+    <title>The 5 Months Exhibition — Anii ❤️</title>
     
-    <!-- Tipografías Elegantes -->
+    <!-- Tipografías de Alta Elegancia -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --fondo: #faf8f5;
-            --texto-principal: #2c2c2c;
-            --oro-rosado: #d4a373;
-            --rosa-suave: #f4e1d2;
-            --blanco-puro: #ffffff;
-            --acento-swift: #faedcd;
+            --fondo-oscuro: #0a0e17;
+            --tarjeta-bg: rgba(255, 255, 255, 0.03);
+            --borde-cristal: rgba(255, 255, 255, 0.12);
+            --oro-rosa: #e8b4b8;
+            --dorado-brillante: #f7d6a4;
+            --texto-blanco: #f0f3f8;
+            --texto-secundario: #a0aab8;
         }
 
         * {
@@ -27,33 +28,66 @@
         }
 
         body {
-            background-color: var(--fondo);
-            color: var(--texto-principal);
-            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--fondo-oscuro);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(232, 180, 184, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(100, 120, 180, 0.08) 0%, transparent 40%);
+            color: var(--texto-blanco);
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* --- Partículas / Sparks --- */
-        .sparkle {
+        /* --- Estrellas y Brillos Animados en Fondo --- */
+        .star {
             position: fixed;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 0.9; transform: scale(1.3); }
+        }
+
+        /* --- Animación de Corazones Cayendo --- */
+        .heart-particle {
+            position: fixed;
+            top: -50px;
             pointer-events: none;
             z-index: 1;
-            color: var(--oro-rosado);
-            font-size: 14px;
-            animation: fall linear forwards;
+            font-size: 1.2rem;
+            color: var(--oro-rosa);
+            opacity: 0.8;
+            user-select: none;
+            animation: fall var(--fall-duration) linear infinite;
         }
 
         @keyframes fall {
-            0% { transform: translateY(-5vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
         }
 
-        /* --- Pantalla de Inicio --- */
+        /* --- Pantalla de Entrada --- */
         #intro {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffffff;
+            background: var(--fondo-oscuro);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -63,43 +97,47 @@
         }
 
         .intro-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            color: var(--texto-principal);
-            margin-bottom: 10px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+            color: var(--dorado-brillante);
+            margin-bottom: 12px;
             text-transform: uppercase;
             text-align: center;
+            text-shadow: 0 0 20px rgba(247, 214, 164, 0.2);
         }
 
         .intro-subtitle {
+            font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            color: #777;
-            margin-bottom: 30px;
+            color: var(--texto-secundario);
+            margin-bottom: 35px;
             font-size: 1.1rem;
         }
 
         .entrar-btn {
-            padding: 16px 45px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            background: transparent;
-            color: var(--texto-principal);
-            border: 1px solid var(--oro-rosado);
+            padding: 16px 48px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            background: rgba(232, 180, 184, 0.05);
+            color: var(--oro-rosa);
+            border: 1px solid var(--oro-rosa);
             cursor: pointer;
             border-radius: 50px;
+            backdrop-filter: blur(10px);
             transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(232, 180, 184, 0.1);
         }
 
         .entrar-btn:hover {
-            background: var(--oro-rosado);
-            color: #ffffff;
-            box-shadow: 0 10px 25px rgba(212, 163, 115, 0.3);
-            transform: translateY(-2px);
+            background: var(--oro-rosa);
+            color: var(--fondo-oscuro);
+            box-shadow: 0 0 30px rgba(232, 180, 184, 0.5);
+            transform: translateY(-3px);
         }
 
-        /* --- Header --- */
+        /* --- Header con Animación Llamativa en el Título --- */
         header {
             height: 100vh;
             display: flex;
@@ -108,46 +146,86 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: radial-gradient(circle, #ffffff 0%, var(--fondo) 100%);
+            position: relative;
+            z-index: 2;
         }
 
-        header h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            font-weight: 400;
-            letter-spacing: 6px;
-            margin-bottom: 15px;
+        .animated-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--oro-rosa) 50%, var(--dorado-brillante) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineText 4s linear infinite, floatTitle 3s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 15px rgba(232, 180, 184, 0.3));
+        }
+
+        @keyframes shineText {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes floatTitle {
+            0% {
+                transform: translateY(0px) scale(1);
+                filter: drop-shadow(0 0 15px rgba(232, 180, 184, 0.3));
+            }
+            100% {
+                transform: translateY(-8px) scale(1.02);
+                filter: drop-shadow(0 0 25px rgba(247, 214, 164, 0.6));
+            }
         }
 
         header p.tagline {
+            font-family: 'Bodoni Moda', serif;
             font-size: 1.3rem;
             font-style: italic;
-            color: #666;
-            max-width: 600px;
+            color: var(--texto-secundario);
+            max-width: 650px;
         }
 
         .scroll-down {
-            margin-top: 40px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            opacity: 0.5;
+            margin-top: 50px;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: var(--oro-rosa);
+            opacity: 0.7;
             text-transform: uppercase;
+            animation: bounce 2s infinite;
         }
 
-        /* --- Galería / Timeline --- */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* --- Timeline & Secciones --- */
         .timeline {
             max-width: 1100px;
             margin: auto;
-            padding: 40px 15px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .month-section {
-            margin-bottom: 140px;
+            margin-bottom: 150px;
+            padding: 40px 20px;
+            background: var(--tarjeta-bg);
+            border: 1px solid var(--borde-cristal);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
             text-align: center;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .month-section.visible {
@@ -156,15 +234,15 @@
         }
 
         .date-badge {
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: var(--oro-rosado);
+            color: var(--dorado-brillante);
             display: inline-block;
             margin-bottom: 25px;
-            border-bottom: 1px solid var(--oro-rosado);
-            padding-bottom: 5px;
+            border-bottom: 1px solid var(--dorado-brillante);
+            padding-bottom: 6px;
         }
 
         /* --- Galería de 5 Fotos en Abanico --- */
@@ -172,84 +250,86 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin: 20px 0 35px 0;
-            perspective: 1000px;
+            gap: 14px;
+            margin: 30px 0 40px 0;
+            perspective: 1200px;
         }
 
         .photo-grid img {
-            border-radius: 8px;
+            border-radius: 12px;
             object-fit: cover;
             cursor: pointer;
-            transition: all 0.5s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            border: 3px solid #ffffff;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
-        /* Estructura de tamaños para 5 fotos */
         .img-outer {
-            width: 14%;
-            height: 140px;
-            opacity: 0.65;
-            transform: scale(0.9);
-            filter: grayscale(15%);
+            width: 13%;
+            height: 150px;
+            opacity: 0.5;
+            transform: scale(0.85) rotateY(15deg);
+            filter: brightness(0.7);
         }
 
         .img-inner {
             width: 18%;
-            height: 190px;
-            opacity: 0.85;
-            transform: scale(0.95);
+            height: 200px;
+            opacity: 0.8;
+            transform: scale(0.95) rotateY(8deg);
         }
 
         .img-main {
-            width: 30%;
-            height: 290px;
+            width: 32%;
+            height: 310px;
             opacity: 1;
             transform: scale(1.08);
             z-index: 10;
-            border: 4px solid var(--oro-rosado) !important;
-            box-shadow: 0 15px 35px rgba(212, 163, 115, 0.25) !important;
+            border: 2px solid var(--oro-rosa) !important;
+            box-shadow: 0 0 30px rgba(232, 180, 184, 0.3) !important;
         }
 
         .photo-grid img:hover {
             opacity: 1;
-            transform: scale(1.15) translateY(-5px) !important;
+            transform: scale(1.15) rotateY(0deg) translateY(-8px) !important;
             z-index: 20;
-            filter: none;
+            filter: brightness(1);
+            border-color: var(--dorado-brillante);
+            box-shadow: 0 0 35px rgba(247, 214, 164, 0.4) !important;
         }
 
         .month-info h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.8rem;
             font-weight: 400;
-            margin-bottom: 10px;
-            color: #1a1a1a;
+            margin-bottom: 12px;
+            color: var(--texto-blanco);
         }
 
         .month-info p {
-            font-size: 1.15rem;
-            color: #555;
+            font-size: 1.05rem;
+            color: var(--texto-secundario);
             max-width: 650px;
-            margin: 0 auto 15px auto;
-            font-style: italic;
+            margin: 0 auto 18px auto;
+            font-weight: 300;
         }
 
         .swift-lyric {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--oro-rosado);
-            text-transform: uppercase;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--oro-rosa);
+            font-style: italic;
         }
 
-        /* --- Lightbox / Visor de Fotos --- */
+        /* --- Visor / Lightbox --- */
         #lightbox {
             display: none;
             position: fixed;
             z-index: 2000;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 15, 15, 0.93);
+            background: rgba(5, 8, 15, 0.95);
+            backdrop-filter: blur(15px);
             justify-content: center;
             align-items: center;
             cursor: pointer;
@@ -258,52 +338,56 @@
         #lightbox img {
             max-width: 90%;
             max-height: 85%;
-            border-radius: 6px;
-            border: 2px solid var(--oro-rosado);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
+            border-radius: 12px;
+            border: 1px solid var(--oro-rosa);
+            box-shadow: 0 0 50px rgba(232, 180, 184, 0.3);
         }
 
-        /* --- Player de Música --- */
+        /* --- Reproductor Flotante --- */
         #music-container {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
             max-width: 420px;
             z-index: 500;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            border-radius: 16px;
             overflow: hidden;
+            border: 1px solid var(--borde-cristal);
         }
 
         footer {
-            padding: 100px 20px;
+            padding: 120px 20px;
             text-align: center;
-            background: #ffffff;
-            border-top: 1px solid var(--rosa-suave);
+            background: linear-gradient(to top, rgba(232, 180, 184, 0.05), transparent);
+            position: relative;
+            z-index: 2;
         }
 
         footer h3 {
-            font-family: 'Cinzel', serif;
+            font-family: 'Bodoni Moda', serif;
             font-weight: 400;
-            font-size: 1.5rem;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            color: var(--dorado-brillante);
+            margin-bottom: 12px;
         }
 
         footer p {
             font-style: italic;
-            color: #777;
+            color: var(--texto-secundario);
+            font-size: 0.95rem;
         }
 
-        /* Adaptación a dispositivos móviles */
+        /* Adaptación a Celulares */
         @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            .img-outer { display: none; } /* En celular ocultamos las 2 más lejanas para no amontonar */
-            .img-inner { width: 28%; height: 150px; }
-            .img-main { width: 44%; height: 210px; }
+            .animated-title { font-size: 2.2rem; }
+            .img-outer { display: none; }
+            .img-inner { width: 28%; height: 160px; }
+            .img-main { width: 44%; height: 230px; }
+            .month-section { margin-bottom: 80px; }
         }
     </style>
 </head>
@@ -312,155 +396,176 @@
     <!-- Pantalla de Entrada -->
     <div id="intro">
         <div class="intro-title">The 5 Months Exhibition</div>
-        <div class="intro-subtitle">Un recorrido por nuestra historia a través del tiempo</div>
-        <button class="entrar-btn" onclick="iniciarExperiencia()">ENTRAR AL MUSEO</button>
+        <div class="intro-subtitle">Anii's Version</div>
+        <button class="entrar-btn" onclick="iniciarExperiencia()">ABRIR GALERÍA</button>
     </div>
 
-    <!-- Visor de Fotos en Pantalla Completa -->
+    <!-- Visor de Fotos -->
     <div id="lightbox" onclick="cerrarImagen()">
-        <img id="img-full" src="" alt="Foto en tamaño completo">
+        <img id="img-full" src="" alt="Foto en pantalla completa">
     </div>
 
-    <!-- Encabezado -->
+    <!-- Encabezado con título animado -->
     <header>
-        <h1>CINCO MESES CONTIGO</h1>
+        <h1 class="animated-title">CINCO MESES CONTIGO</h1>
         <p class="tagline">"And at once I knew I was meant to know you." — Taylor Swift</p>
-        <p class="scroll-down">Desliza para explorar ↓</p>
+        <p class="scroll-down">Desliza para descubrir ↓</p>
     </header>
 
-    <!-- Galería por Meses (5 Fotos por cada mes) -->
+    <!-- Galería con fotos del 1 al 25 (.png) -->
     <div class="timeline">
         
-        <!-- MES 1 -->
+        <!-- MES 1 (Fotos 1 a 5) -->
         <div class="month-section">
             <span class="date-badge">Mes I — El Comienzo</span>
             <div class="photo-grid">
-                <img src="foto1.jpg" class="img-outer" onclick="verImagen(this.src)">
-                <img src="foto2.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto3.jpg" class="img-main" onclick="verImagen(this.src)">
-                <img src="foto4.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto5.jpg" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto1.png" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto2.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto3.png" class="img-main" onclick="verImagen(this.src)">
+                <img src="foto4.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto5.png" class="img-outer" onclick="verImagen(this.src)">
             </div>
             <div class="month-info">
                 <h2>Donde todo comenzó</h2>
-                <p>Nuestros primeros pasos juntos. Cada sonrisa de este primer mes marcó el inicio de algo maravilloso.</p>
+                <p>Nuestros primeros pasos juntos. Cada mirada y cada sonrisa de este primer mes marcó el inicio de algo mágico.</p>
                 <span class="swift-lyric">♪ Era: Fearless / Lover</span>
             </div>
         </div>
 
-        <!-- MES 2 -->
+        <!-- MES 2 (Fotos 6 a 10) -->
         <div class="month-section">
             <span class="date-badge">Mes II — Descubriéndonos</span>
             <div class="photo-grid">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
-                <img src="foto7.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto8.jpg" class="img-main" onclick="verImagen(this.src)">
-                <img src="foto9.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto10.jpg" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto6.png" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto7.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto8.png" class="img-main" onclick="verImagen(this.src)">
+                <img src="foto9.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto10.png" class="img-outer" onclick="verImagen(this.src)">
             </div>
             <div class="month-info">
                 <h2>Nuestra propia historia</h2>
-                <p>Aprender de ti, compartir conversaciones infinitas y darme cuenta de lo especial que eres en mi vida.</p>
+                <p>Aprender de ti, compartir conversaciones infinitas y darme cuenta de lo increíble que es tenerte en mi vida.</p>
                 <span class="swift-lyric">♪ "You make everything look like opalite..."</span>
             </div>
         </div>
 
-        <!-- MES 3 -->
+        <!-- MES 3 (Fotos 11 a 15) -->
         <div class="month-section">
             <span class="date-badge">Mes III — La Magia</span>
             <div class="photo-grid">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-main" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto11.png" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto12.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto13.png" class="img-main" onclick="verImagen(this.src)">
+                <img src="foto14.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto15.png" class="img-outer" onclick="verImagen(this.src)">
             </div>
             <div class="month-info">
                 <h2>Momentos Inolvidables</h2>
-                <p>Tres meses juntos construyendo recuerdos que guardaré para siempre. Tu compañía es mi lugar favorito.</p>
-                <span class="swift-lyric">♪ Era: Red / Speak Now</span>
+                <p>Tres meses construyendo recuerdos que guardaré para siempre. Estar a tu lado es mi lugar favorito.</p>
+                <span class="swift-lyric">♪ Era: Speak Now / Red</span>
             </div>
         </div>
 
-        <!-- MES 4 -->
+        <!-- MES 4 (Fotos 16 a 20) -->
         <div class="month-section">
             <span class="date-badge">Mes IV — Creciendo Juntos</span>
             <div class="photo-grid">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-main" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto16.png" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto17.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto18.png" class="img-main" onclick="verImagen(this.src)">
+                <img src="foto19.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto20.png" class="img-outer" onclick="verImagen(this.src)">
             </div>
             <div class="month-info">
                 <h2>Complicidad y Paz</h2>
-                <p>Gracias por cada abrazo, por cada risa compartida y por ser la mejor compañera de aventuras.</p>
+                <p>Gracias por cada abrazo, por las risas espontáneas y por ser mi compañera incondicional.</p>
                 <span class="swift-lyric">♪ Era: folklore / evermore</span>
             </div>
         </div>
 
-        <!-- MES 5 -->
+        <!-- MES 5 (Fotos 21 a 25) -->
         <div class="month-section">
             <span class="date-badge">Mes V — Hoy & Siempre</span>
             <div class="photo-grid">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-main" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-inner" onclick="verImagen(this.src)">
-                <img src="foto6.jpg" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto21.png" class="img-outer" onclick="verImagen(this.src)">
+                <img src="foto22.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto23.png" class="img-main" onclick="verImagen(this.src)">
+                <img src="foto24.png" class="img-inner" onclick="verImagen(this.src)">
+                <img src="foto25.png" class="img-outer" onclick="verImagen(this.src)">
             </div>
             <div class="month-info">
                 <h2>Cinco Meses Increíbles</h2>
-                <p>Llegamos a los 5 meses y esto apenas empieza. Gracias por hacer que cada día valga la pena, Anii.</p>
+                <p>Llegamos a los 5 meses y esto apenas empieza. Gracias por hacer que cada día sea único, Anii.</p>
                 <span class="swift-lyric">♪ "Long story short, I survived... with you."</span>
             </div>
         </div>
 
     </div>
 
-    <!-- Reproductor de Música Flotante -->
+    <!-- Music Player -->
     <div id="music-container">
         <div id="player"></div>
     </div>
 
-    <!-- Pie de Página -->
     <footer>
-        <h3>FELICES 5 MESES, ANII ❤️</h3>
-        <p>Diseñado con todo mi cariño para recordar lo hermoso que es caminar a tu lado.</p>
+        <h3>FELICES 5 MESES, Mi Amor ❤️</h3>
+        <p>Diseñado con todo mi cariño para nuestra historia.</p>
     </footer>
 
     <script>
-        // Lluvia sutil de destellos (Sparks) estilo Swiftie
-        function crearBrillos() {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            sparkle.innerHTML = ['✨', '✦', '✧', '🌸'][Math.floor(Math.random() * 4)];
-            sparkle.style.left = Math.random() * 100 + 'vw';
-            sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-            sparkle.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            document.body.appendChild(sparkle);
-
-            setTimeout(() => sparkle.remove(), 10000);
+        // Generador de Estrellas/Brillos en el Fondo
+        function crearEstrellas() {
+            const numStars = 35;
+            for(let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                document.body.appendChild(star);
+            }
         }
-        setInterval(crearBrillos, 600);
 
-        // Inicio de Experiencia y Música
+        // Generador de Corazones Cayendo (Animación continua)
+        function crearCorazones() {
+            const totalCorazones = 25;
+            const simbolos = ['♥', '💖', '✨', '💕', '🤍'];
+            
+            for(let i = 0; i < totalCorazones; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
+                
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = (Math.random() * 8) + 's';
+                heart.style.setProperty('--fall-duration', (Math.random() * 6 + 6) + 's');
+                heart.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
+                
+                document.body.appendChild(heart);
+            }
+        }
+
+        crearEstrellas();
+        crearCorazones();
+
+        // Inicialización de la Experiencia
         function iniciarExperiencia() {
             const intro = document.getElementById('intro');
             intro.style.opacity = '0';
             setTimeout(() => { intro.style.visibility = 'hidden'; }, 1200);
 
-            // Carga de la canción (puedes ajustar el link de Apple Music/Spotify)
             const playerDiv = document.getElementById('player');
             playerDiv.innerHTML = `
                 <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
                 frameborder="0" height="80" 
-                style="width:100%;overflow:hidden;border-radius:12px;" 
+                style="width:100%;overflow:hidden;border-radius:16px;" 
                 src="https://embed.music.apple.com/mx/song/opalite/1838810953?l=en-GB&autoplay=1">
                 </iframe>`;
         }
 
-        // Funciones del Lightbox (Visor de imágenes)
+        // Visor de Imagen
         function verImagen(src) {
             const lightbox = document.getElementById('lightbox');
             const imgFull = document.getElementById('img-full');
@@ -472,14 +577,14 @@
             document.getElementById('lightbox').style.display = 'none';
         }
 
-        // Revelado suave al hacer scroll
+        // Revelado Dinámico al Scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
 
         document.querySelectorAll('.month-section').forEach(m => observer.observe(m));
     </script>
